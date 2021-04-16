@@ -1,0 +1,185 @@
+{
+  "project_info": {
+    "project_number": "716740346557",
+    "firebase_url": "https://canteenrestaurant-4ee8b-default-rtdb.firebaseio.com",
+    "project_id": "canteenrestaurant-4ee8b",
+    "storage_bucket": "canteenrestaurant-4ee8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716740346557:android:bf794438375157150c2dd4",
+        "android_client_info": {
+          "package_name": "com.example.canteen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIzlJPpwmvh662MUKrnHfLygxlqF7-ALs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716740346557:android:c27635caa1d2f5f90c2dd4",
+        "android_client_info": {
+          "package_name": "com.example.canteen_copy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIzlJPpwmvh662MUKrnHfLygxlqF7-ALs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716740346557:android:0ffe174ce89f51040c2dd4",
+        "android_client_info": {
+          "package_name": "com.example.canteenadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIzlJPpwmvh662MUKrnHfLygxlqF7-ALs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716740346557:android:556149d7406831e00c2dd4",
+        "android_client_info": {
+          "package_name": "uk.edu.le.co2103.canteen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIzlJPpwmvh662MUKrnHfLygxlqF7-ALs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716740346557:android:2e7168862873819d0c2dd4",
+        "android_client_info": {
+          "package_name": "uk.edu.le.co2103.chi2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIzlJPpwmvh662MUKrnHfLygxlqF7-ALs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716740346557:android:ccf8248592beb5850c2dd4",
+        "android_client_info": {
+          "package_name": "uk.edu.le.co2103.trynew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIzlJPpwmvh662MUKrnHfLygxlqF7-ALs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716740346557-ihhsbvqtb3oqrb68l7ph79qlqvpni6c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
