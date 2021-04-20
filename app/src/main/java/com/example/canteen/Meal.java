@@ -1,22 +1,19 @@
 package com.example.canteen;
 
 public class Meal {
-    private String id;
     private String mealID;
     private String name;
     private String description;
+    private String ingredients;
     private String price;
     private String url;
+    private String category;
+
+    public Meal() {
+    }
 
     public Meal(String mealID, String name, String description, String price, String url) {
         this.mealID = mealID;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.url = url;
-    }
-
-    public Meal(String name, String description, String price, String url) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -29,9 +26,6 @@ public class Meal {
 
     public void setMealId(String mealID) {
         this.mealID = mealID;
-    }
-
-    public Meal() {
     }
 
     public String getName() {
@@ -50,6 +44,14 @@ public class Meal {
         this.description = description;
     }
 
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
     public String getPrice() {
         return price;
     }
@@ -66,11 +68,11 @@ public class Meal {
         this.url = url;
     }
 
-    public String getId() {
-        return id;
+    public String getCategory() {
+        return category;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

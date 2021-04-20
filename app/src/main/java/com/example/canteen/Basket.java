@@ -1,87 +1,71 @@
 package com.example.canteen;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class Basket {
+    private String mealID;
+    private String name;
+    private String description;
+    private String ingredients;
+    private String price;
+    private String quantity;
+    private String url;
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
 
-    @ColumnInfo(name = "meal_id")
-    private String mealId;
-
-    @ColumnInfo(name = "meal_name")
-    private String mealName;
-
-    @ColumnInfo(name = "meal_price")
-    private float mealPrice;
-
-    @ColumnInfo(name = "meal_quantity")
-    private int mealQuantity;
-
-    @ColumnInfo(name = "meal_description")
-    private String mealDescription;
-
-    @ColumnInfo(name = "meal_image")
-    private String mealImage;
-
-    public String getMealImage() {
-        return mealImage;
+    public Basket() {
     }
 
-    public void setMealImage(String mealImage) {
-        this.mealImage = mealImage;
+    public String getMealID() {
+        return mealID;
     }
 
-    public String getMealDescription() {
-        return mealDescription;
+    public void setMealID(String mealID) {
+        this.mealID = mealID;
     }
 
-    public void setMealDescription(String mealDescription) {
-        this.mealDescription = mealDescription;
+    public String getName() {
+        return name;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getDescription() {
+        return description;
     }
 
-
-    public String getMealId() {
-        return mealId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setMealId(String mealId) {
-        this.mealId = mealId;
+    public String getIngredients() {
+        return ingredients;
     }
 
-    public String getMealName() {
-        return mealName;
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
     }
 
-    public void setMealName(String mealName) {
-        this.mealName = mealName;
+    public String getPrice() {
+        return price;
     }
 
-    public float getMealPrice() {
-        return mealPrice;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public void setMealPrice(float mealPrice) {
-        this.mealPrice = mealPrice;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public int getMealQuantity() {
-        return mealQuantity;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-    public void setMealQuantity(int mealQuantity) {
-        this.mealQuantity = mealQuantity;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

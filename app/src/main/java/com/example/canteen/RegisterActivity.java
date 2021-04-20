@@ -24,7 +24,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText mEmail, mPassword,mConfirmPassword;
-    Button mRegisterBtn;
+    Button mRegisterBtn, mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
     // FirebaseFirestore fStore;
@@ -43,12 +43,21 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn = findViewById(R.id.registerButton);
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
+        mLoginBtn = findViewById(R.id.loginButton);
 
 
 
-        if (fAuth.getInstance().getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
-        }
+//        if (fAuth.getInstance().getCurrentUser() != null) {
+//            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+//        }
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

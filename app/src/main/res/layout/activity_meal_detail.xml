@@ -140,4 +140,16 @@
         app:layout_constraintEnd_toStartOf="@+id/meal_name"
         app:layout_constraintTop_toBottomOf="@+id/meal_image" />
 
+    <TextView
+        android:id="@+id/meal_ingredients"
+        android:layout_width="358dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Bread, butter, cheese, tomato"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meal_desc" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

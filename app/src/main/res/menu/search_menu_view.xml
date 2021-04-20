@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group>
+
+        <item
+            android:id="@+id/searchFood"
+            android:icon="@drawable/ic_baseline_search"
+            android:title="Search for food"
+            app:actionViewClass="android.widget.SearchView"
+            app:showAsAction="collapseActionView"></item>
+
+        <item
+            android:id="@+id/searchIngredient"
+            android:icon="@drawable/ic_baseline_search"
+            android:title="Search for ingredient"
+            app:actionViewClass="android.widget.SearchView"
+            app:showAsAction="collapseActionView"></item>
+
+    </group>
+
+
+</menu>

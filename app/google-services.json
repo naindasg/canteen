@@ -37,9 +37,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:716740346557:android:cf3d5fbc0dadeebb0c2dd4",
+        "mobilesdk_app_id": "1:716740346557:android:c27635caa1d2f5f90c2dd4",
         "android_client_info": {
-          "package_name": "com.example.canteen_new"
+          "package_name": "com.example.canteen_copy"
         }
       },
       "oauth_client": [

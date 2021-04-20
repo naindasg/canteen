@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Canteen">
-        <activity android:name=".RestaurantOrders"></activity>
-        <activity android:name=".AdminLoginActivity" />
-        <activity android:name=".UpdateMealActivity" />
+        <activity android:name=".AwaitingOrderActivity"></activity>
+        <activity android:name=".BasketActivity" />
         <activity android:name=".MealDetailActivity" />
+        <activity android:name=".UpdateMealActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".CheckoutActivityJava" />
         <activity android:name=".MenuActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

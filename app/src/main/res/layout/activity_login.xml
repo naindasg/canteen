@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
@@ -26,8 +26,8 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="347dp"
-        android:layout_height="52dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
@@ -53,12 +53,11 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="#00897B"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
@@ -99,18 +98,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="Register"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/adminLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Click here if you are admin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerLinkButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

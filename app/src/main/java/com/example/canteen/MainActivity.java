@@ -1,18 +1,13 @@
 package com.example.canteen;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MenuItem;
-
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
@@ -26,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_main);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         //  setSupportActionBar(toolbar);
         //  ActionBar actionBar = getSupportActionBar();
         //  actionBar.setDisplayHomeAsUpEnabled(true); //Shows the menu icon
@@ -61,15 +56,16 @@ public class MainActivity extends AppCompatActivity {
         String screen = intent.getStringExtra("screen");
 
         String mealPrice = intent.getStringExtra("mealPrice");
+        String email = intent.getStringExtra("email");
 
 
-        if(Objects.equals(screen, "tray")) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.content_view, new BasketFragment()).commit();
-
-        } else {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        }
+//        if(Objects.equals(screen, "tray")) {
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.replace(R.id.content_view, new BasketFragment()).commit();
+//
+//        } else {
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        }
 
 
     }

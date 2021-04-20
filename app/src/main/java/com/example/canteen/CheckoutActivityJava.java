@@ -2,6 +2,8 @@ package com.example.canteen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,6 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -45,39 +52,36 @@ public class CheckoutActivityJava extends AppCompatActivity {
     private OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
     private Stripe stripe;
+    int count = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
+
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
                 Objects.requireNonNull("pk_test_51IHfbrGfF6sAEAR9wvJrBW61soe8DfrRc5hKyQsl8SkfimyT0rolH6bj2fLDwD3qm202aIh62SKZilBCE99xTYid00pAUA3uRR")
         );
         startCheckout();
+
     }
+
     private void startCheckout() {
         Intent intent = getIntent();
         String price = intent.getStringExtra("mealPrice");
 
-
         double amount = Double.parseDouble(price);
+        Log.d("TAG", "startCheckout: " + amount);
+
         // Create a PaymentIntent by calling the server's endpoint.
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
-//        String json = "{"
-//                + "\"currency\":\"usd\","
-//                + "\"items\":["
-//                + "{\"id\":\"photo_subscription\"}"
-//                + "]"
-//                + "}";
-
-
-        ;
 
         Map<String, Object> payMap = new HashMap<>();
         Map<String, Object> itemMap = new HashMap<>();
         List<Map<String, Object>> itemList = new ArrayList<>();
-        payMap.put("currency", "usd");
+        payMap.put("currency", "gbp");
         itemMap.put("id", "photo_subscription");
         itemMap.put("amount", amount * 100);
         itemList.add(itemMap);
@@ -101,7 +105,73 @@ public class CheckoutActivityJava extends AppCompatActivity {
                 ConfirmPaymentIntentParams confirmParams = ConfirmPaymentIntentParams
                         .createWithPaymentMethodCreateParams(params, paymentIntentClientSecret);
                 stripe.confirmPayment(this, confirmParams);
+
+                Intent intent1 = getIntent();
+                String email = intent1.getStringExtra("email");
+                String emailSub = email.substring(0, 4);
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("/customer/" + emailSub + "/basket");
+                DatabaseReference newref = FirebaseDatabase.getInstance().getReference("/orders");
+                DatabaseReference customerRef = FirebaseDatabase.getInstance().getReference("/customerName");
+
+
+
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                String name = dataSnapshot.child("name").getValue().toString();
+                                String quantity = dataSnapshot.child("quantity").getValue().toString();
+                                String price = dataSnapshot.child("price").getValue().toString();
+                                String mealID = dataSnapshot.child("mealID").getValue().toString();
+                                String description = dataSnapshot.child("description").getValue().toString();
+                                String ingredients = dataSnapshot.child("ingredients").getValue().toString();
+                                String url = dataSnapshot.child("url").getValue().toString();
+
+
+
+                                Basket basket = new Basket();
+                                basket.setMealID(mealID);
+                                basket.setName(name);
+                                basket.setQuantity(quantity);
+                                basket.setPrice(price);
+                                basket.setDescription(description);
+                                basket.setIngredients(ingredients);
+                                basket.setUrl(url);
+
+//                                newref.child(emailSub).removeValue();
+
+                                newref.child(emailSub).push().setValue(basket);
+
+                            }
+
+
+                            //customerRef.child("customerName").setValue(emailSub);
+
+
+
+                            customerRef.push().child("customerName").setValue(emailSub);
+
+                            ref.removeValue();
+
+
+                        };
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("TAG", "onCancelled: " + " cannot get data");
+                    }
+                });
+
+                Intent intent2 = new Intent(getApplicationContext(), AwaitingOrderActivity.class);
+                intent2.putExtra("email", email);
+                startActivity(intent2);
+
             }
+
+
         });
     }
     private void displayAlert(@NonNull String title,
@@ -118,6 +188,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
         // Handle the result of stripe.confirmPayment
         stripe.onPaymentResult(requestCode, data, new PaymentResultCallback(this));
     }
+
     private void onPaymentSuccess(@NonNull final Response response) throws IOException {
         Gson gson = new Gson();
         Type type = new TypeToken<Map<String, String>>(){}.getType();
@@ -126,6 +197,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
                 type
         );
         paymentIntentClientSecret = responseMap.get("clientSecret");
+
     }
     private static final class PayCallback implements Callback {
         @NonNull private final WeakReference<CheckoutActivityJava> activityRef;
@@ -183,6 +255,9 @@ public class CheckoutActivityJava extends AppCompatActivity {
                         "Payment completed",
                         gson.toJson(paymentIntent)
                 );
+
+
+
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
                 // Payment failed – allow retrying using a different payment method
                 activity.displayAlert(
@@ -200,5 +275,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
             // Payment request failed – allow retrying using the same payment method
             activity.displayAlert("Error", e.toString());
         }
+
+
     }
+
+
+
 }
