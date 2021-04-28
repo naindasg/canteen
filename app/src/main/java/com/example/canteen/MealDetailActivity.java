@@ -10,10 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -97,11 +101,39 @@ public class MealDetailActivity extends AppCompatActivity {
         addToBasket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
-                ArrayList<Basket> basketArrayList = new ArrayList<>();
+//                ref.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.exists()) {
+//                            for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+//                                String name = dataSnapshot.child("email").getValue().toString();
+//
+//                                if (name.equals(email)) {
+//                                    Log.d("TAG", "onDataChange: " + name);
+//
+//                                    Basket basket = new Basket();
+//                                    basket.setMealID(mealId);
+//                                    basket.setName(mealName);
+//                                    basket.setDescription(mealDescription);
+//                                    basket.setIngredients(mealIngredients);
+//                                    basket.setPrice(mealPrice);
+//                                    basket.setQuantity(quantity.getText().toString());
+//                                    basket.setUrl(imageUrl);
+//
+//                                    ref.child(dataSnapshot.getKey()).child("basket").child("meal" + mealId).setValue(basket);
+//
+//                                }
+//
+//
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
 
                 Basket basket = new Basket();
                 basket.setMealID(mealId);
@@ -111,15 +143,6 @@ public class MealDetailActivity extends AppCompatActivity {
                 basket.setPrice(mealPrice);
                 basket.setQuantity(quantity.getText().toString());
                 basket.setUrl(imageUrl);
-
-                Log.d("TAG", "onClick:  " + email);
-
-
-
-
-//                ref.child(email.substring(0, 4)).child("basket").push().setValue(customer);
-
-//                ref.setValue(customer);
 
 
 
@@ -132,6 +155,43 @@ public class MealDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+//        ref = FirebaseDatabase.getInstance().getReference("/customer");
+//
+//        addToBasket.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Basket basket = new Basket();
+//                basket.setMealID(mealId);
+//                basket.setName(mealName);
+//                basket.setDescription(mealDescription);
+//                basket.setIngredients(mealIngredients);
+//                basket.setPrice(mealPrice);
+//                basket.setQuantity(quantity.getText().toString());
+//                basket.setUrl(imageUrl);
+//
+//                Log.d("TAG", "onClick:  " + email);
+//
+//
+//                ref.child(email.substring(0, 4)).child("basket").child("meal" + mealId).setValue(basket);
+//                Toast.makeText(getApplicationContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+//                intent.putExtra("email", email);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 }

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +29,7 @@ public class MenuActivity extends AppCompatActivity {
     MealAdapter mealAdapter;
     Query newRef;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +39,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
 
-        Log.d("TAG", "onCreate: " + email);
-
         ref = FirebaseDatabase.getInstance().getReference("/meals");
-
 
         recyclerView = findViewById(R.id.recycler1);
 
@@ -82,12 +81,13 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu_view, menu);
         MenuItem food = menu.findItem(R.id.searchFood);
         MenuItem ingredients = menu.findItem(R.id.searchIngredient);
+
+
 
         SearchView searchView2 = (SearchView) ingredients.getActionView();
 
@@ -106,26 +106,26 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
-            SearchView searchView = (SearchView) food.getActionView();
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
+        SearchView searchView = (SearchView) food.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
 //                    search(query);
-                    return false;
-                }
+                return false;
+            }
 
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    search(newText);
-                    return true;
-                }
-            });
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return true;
+            }
+        });
 
         return super.onCreateOptionsMenu(menu);
     }
 
     private void search(String s) {
-        
+
 
         if (s.isEmpty()) {
             FirebaseRecyclerOptions<Meal> options = new FirebaseRecyclerOptions.Builder<Meal>().setQuery(ref, Meal.class).build();
@@ -144,10 +144,6 @@ public class MenuActivity extends AppCompatActivity {
         }
 
 
-
-
-        
-
         mealAdapter.setOnItemClickListener(new MealAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Meal meal) {
@@ -164,7 +160,6 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void search2(String s) {
-
 
 
         if(s.isEmpty()) {
@@ -202,6 +197,8 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
     @Override

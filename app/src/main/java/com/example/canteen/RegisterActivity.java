@@ -18,6 +18,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.ktx.Firebase;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -27,10 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button mRegisterBtn, mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
-    // FirebaseFirestore fStore;
     String userID;
-    TextView loginLinkBtn;
-
+    DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
 //        if (fAuth.getInstance().getCurrentUser() != null) {
 //            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
 //        }
+
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +92,6 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                System.out.println("1===============");
-                Log.i("test1", "before");
 
                 progressBar.setVisibility(View.VISIBLE);
                 fAuth.createUserWithEmailAndPassword(_email, _password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -103,27 +103,31 @@ public class RegisterActivity extends AppCompatActivity {
 
                             userID = fAuth.getCurrentUser().getUid();
 
-
                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                            System.out.println("2============");
-                            Log.i("test2", "in");
+
+                            ref = FirebaseDatabase.getInstance().getReference("customer");
+
+                            Customer customer = new Customer();
+                            customer.setEmail(_email);
+                            customer.setUniversityId(_email.substring(0, 4));
+                            customer.setPassword(_password);
+
+                            ref.push().setValue(customer);
 
                         } else {
                             Toast toast = Toast.makeText(RegisterActivity.this, task.getException().getMessage(), LENGTH_SHORT);
                             toast.show();
-                            System.out.println("3=============");
-
-                            Log.i("test3x", task.getException().getMessage());
-                            //  toast = Toast.makeText(getApplicationContext(), _email, LENGTH_SHORT);
 
                         }
                     }
                 });
 
-                // Toast toast = Toast.makeText(getApplicationContext(), _email, LENGTH_SHORT);
                 progressBar.setVisibility(View.INVISIBLE);
 
             }
         });
+
+
+
     }
 }

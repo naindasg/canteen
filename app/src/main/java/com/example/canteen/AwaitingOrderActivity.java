@@ -7,13 +7,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AwaitingOrderActivity extends AppCompatActivity {
+
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_awaiting_order);
+
+        fAuth = FirebaseAuth.getInstance();
+
 
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
@@ -21,22 +29,31 @@ public class AwaitingOrderActivity extends AppCompatActivity {
         Log.d("AwaitingOrder", "onCreate: " + email);
 
 
-        Button backToMenu = (Button) findViewById(R.id.backToMenu);
+        Button logout = (Button) findViewById(R.id.logout);
 
-        backToMenu.setOnClickListener(new View.OnClickListener() {
+
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                intent.putExtra("email", email);
-                startActivity(intent);
-
+                fAuth.signOut();
+                signOutUser();
             }
         });
 
     }
 
+
     @Override
     public void onBackPressed() {
 
     }
+
+
+    private void signOutUser() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
 }

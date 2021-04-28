@@ -3,6 +3,8 @@ package com.example.canteen;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,13 +16,16 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class MealAdapter extends FirebaseRecyclerAdapter<Meal, MealAdapter.mealViewHolder> {
+public class MealAdapter extends FirebaseRecyclerAdapter<Meal, MealAdapter.mealViewHolder> implements Filterable {
 
     private static final int LAYOUT_ONE = 0;
     private static final int LAYOUT_TWO = 1;
     private OnItemClickListener onItemClickListener;
+
+    List<String> mealListAll;
 
     public MealAdapter(@NonNull FirebaseRecyclerOptions<Meal> options) {
         super(options);
@@ -70,6 +75,11 @@ public class MealAdapter extends FirebaseRecyclerAdapter<Meal, MealAdapter.mealV
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item, parent, false);
             return new mealViewHolder(view);
      //   }
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 
 

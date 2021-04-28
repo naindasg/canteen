@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText mEmail,mPassword;
+    EditText mEmail, mPassword;
     Button mLoginBtn;
     Button mRegisterLinkButton;
     FirebaseAuth fAuth;
@@ -43,37 +43,36 @@ public class LoginActivity extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email =mEmail.getText().toString().trim();
-                String password= mPassword.getText().toString().trim();
+                String email = mEmail.getText().toString().trim();
+                String password = mPassword.getText().toString().trim();
 
 
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is required");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     mEmail.setError("Password is required");
                     return;
                 }
 
-                if(password.length()<5){
+                if (password.length() < 5) {
                     mEmail.setError("Password must be >=5 characters");
                     return;
                 }
 
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast toast = Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_LONG);
                             toast.show();
                             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                             intent.putExtra("email", email);
                             startActivity(intent);
-                            Log.d("TAG", "onComplete: " + email);
 
-                        }else{
+                        } else {
                             Toast toast = Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG);
                             toast.show();
                         }
@@ -88,13 +87,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                Log.d("TAG", "onComplete: " + "Lets register");
                 startActivity(intent);
-
 
             }
         });
-
 
     }
 

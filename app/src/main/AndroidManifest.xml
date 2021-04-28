@@ -4,6 +4,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data
+        android:name="firebase_messaging_auto_init_enabled"
+        android:value="false" />
+    <meta-data
+        android:name="firebase_analytics_collection_enabled"
+        android:value="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Canteen">
-        <activity android:name=".AwaitingOrderActivity"></activity>
+        <activity android:name=".AwaitingOrderActivity" />
         <activity android:name=".BasketActivity" />
         <activity android:name=".MealDetailActivity" />
         <activity android:name=".UpdateMealActivity" />

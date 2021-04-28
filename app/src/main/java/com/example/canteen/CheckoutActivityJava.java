@@ -66,6 +66,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
         );
         startCheckout();
 
+
     }
 
     private void startCheckout() {
@@ -111,9 +112,12 @@ public class CheckoutActivityJava extends AppCompatActivity {
                 String emailSub = email.substring(0, 4);
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("/customer/" + emailSub + "/basket");
+
                 DatabaseReference newref = FirebaseDatabase.getInstance().getReference("/orders");
                 DatabaseReference customerRef = FirebaseDatabase.getInstance().getReference("/customerName");
 
+
+                DatabaseReference orderHistory = FirebaseDatabase.getInstance().getReference("/orderHistory");
 
 
                 ref.addValueEventListener(new ValueEventListener() {
@@ -129,8 +133,6 @@ public class CheckoutActivityJava extends AppCompatActivity {
                                 String ingredients = dataSnapshot.child("ingredients").getValue().toString();
                                 String url = dataSnapshot.child("url").getValue().toString();
 
-
-
                                 Basket basket = new Basket();
                                 basket.setMealID(mealID);
                                 basket.setName(name);
@@ -140,16 +142,12 @@ public class CheckoutActivityJava extends AppCompatActivity {
                                 basket.setIngredients(ingredients);
                                 basket.setUrl(url);
 
-//                                newref.child(emailSub).removeValue();
-
                                 newref.child(emailSub).push().setValue(basket);
 
+                                orderHistory.child(emailSub).push().setValue(basket);
+
+
                             }
-
-
-                            //customerRef.child("customerName").setValue(emailSub);
-
-
 
                             customerRef.push().child("customerName").setValue(emailSub);
 
