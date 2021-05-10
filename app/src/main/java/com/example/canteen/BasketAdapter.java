@@ -21,7 +21,7 @@ public class BasketAdapter extends FirebaseRecyclerAdapter<Basket, BasketAdapter
         super(options);
     }
 
-
+////
     @Override
     protected void
     onBindViewHolder(@NonNull BasketAdapter.basketViewHolder holder, int position, @NonNull Basket model) { //Binds data to the views
