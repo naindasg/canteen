@@ -33,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         registerLinkButton = findViewById(R.id.registerLinkButton);
 
+//        if (fAuth.getInstance().getCurrentUser() != null) {
+//            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+//        }
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
