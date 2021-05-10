@@ -75,5 +75,5 @@ public class Meal {
     public void setCategory(String category) {
         this.category = category;
     }
-    //
+
 }
