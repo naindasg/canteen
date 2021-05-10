@@ -36,22 +36,22 @@ public class AwaitingOrderActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String universityInitials = intent.getStringExtra("universityInitials");
 
-        //Handle logout
-        Button logout = (Button) findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fAuth.signOut();
-
-                //Clear basket upon logout
-                DatabaseReference customerRef = FirebaseDatabase.getInstance().getReference("/customer");
-                customerRef.child(universityInitials).child("basket").removeValue();
-
-                Intent intent = new Intent(AwaitingOrderActivity.this, LoginActivity.class);
-                startActivity(intent);
-                System.exit(0);
-            }
-        });
+//        //Handle logout
+//        Button logout = (Button) findViewById(R.id.logout);
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                fAuth.signOut();
+//
+//                //Clear basket upon logout
+//                DatabaseReference customerRef = FirebaseDatabase.getInstance().getReference("/customer");
+//                customerRef.child(universityInitials).child("basket").removeValue();
+//
+//                Intent intent = new Intent(AwaitingOrderActivity.this, LoginActivity.class);
+//                startActivity(intent);
+//                System.exit(0);
+//            }
+//        });
 
     }
 
