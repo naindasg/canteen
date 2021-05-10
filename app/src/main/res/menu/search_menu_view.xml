@@ -18,6 +18,10 @@
             app:actionViewClass="android.widget.SearchView"
             app:showAsAction="collapseActionView"></item>
 
+        <item
+            android:id="@+id/logoutFromMenu"
+            android:title="Logout"></item>
+
     </group>
 
 

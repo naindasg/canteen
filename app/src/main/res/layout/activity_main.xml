@@ -8,7 +8,7 @@
     android:background="#F1F1F1">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler1"
+        android:id="@+id/menu_reycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/viewBasket"
