@@ -3,44 +3,34 @@ package com.example.canteen;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class BasketAdapter extends FirebaseRecyclerAdapter<Basket, BasketAdapter.basketViewHolder> {
 
-    private BasketAdapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
     public BasketAdapter(@NonNull FirebaseRecyclerOptions<Basket> options) {
         super(options);
     }
 
-////
     @Override
     protected void
-    onBindViewHolder(@NonNull BasketAdapter.basketViewHolder holder, int position, @NonNull Basket model) { //Binds data to the views
-        holder.mealName.setText(model.getName()); //puts meal name into the holder
-        holder.mealQuantity.setText(model.getQuantity()); //puts meal description into the holder
-
-       // holder.mealID.setText(model.getMealID()); //puts meal ID into the holder
-       // Glide.with(holder.mealImage.getContext()).load(model.getUrl()).into(holder.mealImage); //puts meal image into the holder
+    onBindViewHolder(@NonNull basketViewHolder holder, int position, @NonNull Basket model) { //Binds data to the views
+        holder.mealName.setText(model.getName());
+        holder.mealQuantity.setText(model.getQuantity());
         holder.mealImage.setText(model.getUrl());
 
-
-        float priceFloat = Float.parseFloat(model.getPrice());
-        int quantityInt = Integer.parseInt(model.getQuantity());
-        float subtotalFloat = priceFloat * quantityInt;
-
-
-
-        holder.mealSubtotal.setText(String.format("%.2f", subtotalFloat)); //puts meal price into the holder
-
+        //Calculate subtotal and put it into the holder
+        float price = Float.parseFloat(model.getPrice());
+        int quantity = Integer.parseInt(model.getQuantity());
+        float totalPrice = price * quantity;
+        holder.mealSubtotal.setText(String.format("%.2f", totalPrice));
 
     }
 
@@ -52,9 +42,9 @@ public class BasketAdapter extends FirebaseRecyclerAdapter<Basket, BasketAdapter
 
     @NonNull
     @Override
-    public BasketAdapter.basketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //Inflating the menu item (list_item_meal)
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.basket_item_recycler, parent, false);
+    public basketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //Inflating the menu item (basket_item_recycler)
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.basket_item, parent, false);
         return new basketViewHolder(view);
     }
 
@@ -62,14 +52,12 @@ public class BasketAdapter extends FirebaseRecyclerAdapter<Basket, BasketAdapter
         private TextView mealName, mealDescription, mealPrice, mealID, mealIngredients, mealQuantity, mealSubtotal;
         private TextView mealImage;
 
-        public basketViewHolder(@NonNull View itemView) { //gets data from the menu item (list_item_meal)
+        public basketViewHolder(@NonNull View itemView) { //gets data from the menu item (meal_item)
             super(itemView);
             mealQuantity = itemView.findViewById(R.id.basket_meal_quantity_r);
             mealName = itemView.findViewById(R.id.basket_meal_name_r);
             mealSubtotal = itemView.findViewById(R.id.basket_meal_subtotal_r);
-//            mealDescription = itemView.findViewById(R.id.basket_meal_description_r);
             mealImage = itemView.findViewById(R.id.basket_url);
-//            mealID = itemView.findViewById(R.id.basket_meal_Id_r);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,7 +75,7 @@ public class BasketAdapter extends FirebaseRecyclerAdapter<Basket, BasketAdapter
         void onItemClick(Basket basketRecycler);
     }
 
-    public void setOnItemClickListener(BasketAdapter.OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
