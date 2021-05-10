@@ -1,6 +1,7 @@
 package com.example.canteen;
 
 public class Basket {
+    private String id;
     private String mealID;
     private String name;
     private String description;
@@ -9,8 +10,19 @@ public class Basket {
     private String quantity;
     private String url;
 
-
+    //Empty constructor
     public Basket() {
+    }
+
+    //Full constructor
+    public Basket(String mealID, String name, String description, String ingredients, String price, String quantity, String url) {
+        this.mealID = mealID;
+        this.name = name;
+        this.description = description;
+        this.ingredients = ingredients;
+        this.price = price;
+        this.quantity = quantity;
+        this.url = url;
     }
 
     public String getMealID() {
