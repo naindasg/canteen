@@ -1,56 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:scrollbars="vertical">
 
-    <TextView
-        android:id="@+id/basket_meal_quantity_r"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:padding="10dp"
-        android:text="1"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
 
-    <TextView
-        android:id="@+id/basket_meal_name_r"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:layout_weight="1"
-        android:padding="10dp"
-        android:text="Burger King"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/basket_meal_subtotal_r"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="£10.00"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/basket_meal_name_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:text="Pizza"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/basket_meal_Id_r"
-        android:layout_width="5dp"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:visibility="invisible" />
+        <TextView
+            android:id="@+id/basket_meal_quantity_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="1"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.525" />
 
-    <TextView
-        android:id="@+id/basket_meal_description_r"
-        android:layout_width="5dp"
-        android:layout_height="2dp"
-        android:text="desc"
-        android:visibility="invisible" />
+        <TextView
+            android:id="@+id/basket_meal_subtotal_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="12.00"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.533" />
 
-    <TextView
-        android:id="@+id/basket_meal_image_url_r"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:text="url"
-        android:visibility="invisible" />
+        <TextView
+            android:id="@+id/basket_url"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:text="TextView"
+            android:visibility="invisible"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="15dp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:text="£"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/basket_meal_subtotal_r"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
