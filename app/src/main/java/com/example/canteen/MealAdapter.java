@@ -3,8 +3,6 @@ package com.example.canteen;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,31 +13,13 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import java.util.ArrayList;
-import java.util.List;
 
+public class MealAdapter extends FirebaseRecyclerAdapter<Meal, MealAdapter.mealViewHolder> {
 
-public class MealAdapter extends FirebaseRecyclerAdapter<Meal, MealAdapter.mealViewHolder> implements Filterable {
-
-    private static final int LAYOUT_ONE = 0;
-    private static final int LAYOUT_TWO = 1;
     private OnItemClickListener onItemClickListener;
-
-    List<String> mealListAll;
 
     public MealAdapter(@NonNull FirebaseRecyclerOptions<Meal> options) {
         super(options);
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-//        return super.getItemViewType(position);
-
-        if (position == 0) {
-            return LAYOUT_ONE;
-        } else {
-            return LAYOUT_TWO;
-        }
     }
 
     @Override
@@ -64,24 +44,10 @@ public class MealAdapter extends FirebaseRecyclerAdapter<Meal, MealAdapter.mealV
     @NonNull
     @Override
     public mealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-//        if (viewType == LAYOUT_ONE) {
-//            //Inflating the menu item (meal_item.xml)
-//            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.drink_item, parent, false);
-//            return new mealViewHolder(view);
-//        } else {
-
             //Inflating the menu item (meal_item.xml)
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item, parent, false);
             return new mealViewHolder(view);
-     //   }
     }
-
-    @Override
-    public Filter getFilter() {
-        return null;
-    }
-
 
     class mealViewHolder extends RecyclerView.ViewHolder {
         private TextView mealID, mealName, mealDescription, mealIngredients, mealPrice, mealCategory;
