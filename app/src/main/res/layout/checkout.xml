@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main"
     tools:context=".CheckoutActivityJava">
 
     <com.stripe.android.view.CardInputWidget
@@ -24,5 +23,17 @@
         app:layout_constraintTop_toBottomOf="@+id/cardInputWidget"
         app:layout_constraintStart_toStartOf="@+id/cardInputWidget"
         app:layout_constraintEnd_toEndOf="@+id/cardInputWidget"/>
+
+    <Button
+        android:id="@+id/goBackFromPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Go back"
+        app:layout_constraintEnd_toEndOf="@+id/cardInputWidget"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/cardInputWidget"
+        app:layout_constraintTop_toBottomOf="@+id/payButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

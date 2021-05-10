@@ -1,16 +1,53 @@
 package com.example.canteen;
 
 public class Customer {
-    private String universityId;
+    private String universityInitials;
     private String email;
-    private String password;
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private String type;
+    private String customerName;
+    private String customerEmail;
 
-    public String getUniversityId() {
-        return universityId;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setUniversityId(String universityId) {
-        this.universityId = universityId;
+    public void  setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getUniversityInitials() {
+        return universityInitials;
+    }
+
+    public void setUniversityInitials(String universityInitials) {
+        this.universityInitials = universityInitials;
     }
 
     public String getEmail() {
@@ -21,11 +58,19 @@ public class Customer {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
