@@ -23,7 +23,6 @@
         <activity android:name=".BasketActivity" />
         <activity android:name=".MealDetailActivity" />
         <activity android:name=".UpdateMealActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".CheckoutActivityJava" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".RegisterActivity" />
