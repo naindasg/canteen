@@ -36,7 +36,7 @@ public class AwaitingOrderActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String universityInitials = intent.getStringExtra("universityInitials");
 
-//        //Handle logoutwww
+//        //Handle logoutwwwjjj
 //        Button logout = (Button) findViewById(R.id.logout);
 //        logout.setOnClickListener(new View.OnClickListener() {
 //            @Override
