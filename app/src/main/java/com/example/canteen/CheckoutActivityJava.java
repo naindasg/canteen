@@ -89,7 +89,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
     }
 
     /*
-        startCheckout() has been taken from:
+        startCheckout() is based on the following link:
         https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
      */
     private void startCheckout() {
@@ -154,6 +154,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
 
     }
 
+    /*
+        displayAlert has been taken from:
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+     */
     //Let the customer know that the payment has succeeded
     private void displayAlert(@NonNull String title, @Nullable String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(title).setMessage(message);
@@ -161,6 +165,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
         builder.create().show();
     }
 
+    /*
+        onActivityResult has been taken from:
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+     */
     // Handle the result of stripe.confirmPayment
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -169,6 +177,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
         stripe.onPaymentResult(requestCode, data, new PaymentResultCallback(this));
     }
 
+    /*
+        onPaymentSuccess has been taken from:
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+     */
     //Shows the response of paymentSuccess message
     private void onPaymentSuccess(@NonNull final Response response) throws IOException {
         Gson gson = new Gson();
@@ -182,7 +194,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
     }
 
     /*
-        PayCallBack has been taken from:
+        PayCallBack class has been taken from:
         https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
      */
     private static final class PayCallback implements Callback {

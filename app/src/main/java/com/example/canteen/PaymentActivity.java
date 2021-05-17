@@ -8,8 +8,7 @@ public class PaymentActivity extends Application {
 
     /*
         This sample of code has been taken from:
-        https://stripe.com/docs/payments/accept-a-payment?platform=android
-
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
      */
     @Override
     public void onCreate() {
