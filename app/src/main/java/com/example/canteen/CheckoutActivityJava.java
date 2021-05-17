@@ -48,6 +48,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/*
+    This class has been taken from:
+    https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+ */
 public class CheckoutActivityJava extends AppCompatActivity {
     // 10.0.2.2 is the Android emulator's alias to localhost
     private static final String BACKEND_URL = "http://10.0.2.2:4242/";
@@ -84,6 +88,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
 
     }
 
+    /*
+        startCheckout() has been taken from:
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+     */
     private void startCheckout() {
         //Get totalPrice
         Intent intent = getIntent();
@@ -173,7 +181,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
         paymentIntentClientSecret = responseMap.get("clientSecret");
     }
 
-
+    /*
+        PayCallBack has been taken from:
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+     */
     private static final class PayCallback implements Callback {
         @NonNull
         private final WeakReference<CheckoutActivityJava> activityRef;
@@ -215,6 +226,11 @@ public class CheckoutActivityJava extends AppCompatActivity {
         }
     }
 
+    /*
+        PaymentResultCallBack has been taken from:
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+
+     */
     private static final class PaymentResultCallback implements ApiResultCallback<PaymentIntentResult> {
         @NonNull
         private final WeakReference<CheckoutActivityJava> activityRef;
@@ -257,6 +273,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
 
     }
 
+    /*
+        This random() method has been taken from:
+        https://www.baeldung.com/java-random-string
+     */
     //Creates a unique ID;
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String random() {
