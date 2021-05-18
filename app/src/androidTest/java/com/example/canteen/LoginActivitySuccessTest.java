@@ -36,7 +36,7 @@ public class LoginActivitySuccessTest {
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void loginActivitySuccessTest() {
+    public void loginActivityTest() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.email),
                         childAtPosition(
@@ -67,12 +67,17 @@ public class LoginActivitySuccessTest {
                         isDisplayed()));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(
-                allOf(withText("Canteen"),
-                        withParent(allOf(withId(R.id.action_bar),
-                                withParent(withId(R.id.action_bar_container)))),
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction button = onView(
+                allOf(withId(R.id.viewBasket), withText("VIEW BASKET"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        textView.check(matches(withText("Canteen")));
+        button.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(
