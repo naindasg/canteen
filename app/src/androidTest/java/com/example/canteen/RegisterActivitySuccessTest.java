@@ -34,7 +34,7 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class RegisterActivityTest {
+public class RegisterActivitySuccessTest {
 
     /*
          MAKE SURE TO ENTER A UNIQUE EMAIL ADDRESS THAT HAS YET NOT ALREADY BEEN REGISTERED OTHERWISE THE TEST WILL FAIL
