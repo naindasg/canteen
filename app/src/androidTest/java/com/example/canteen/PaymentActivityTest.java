@@ -40,7 +40,7 @@ public class PaymentActivityTest {
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void paymentActivityTest() {
+    public void paymentActivityTest2() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.email),
                         childAtPosition(
@@ -77,6 +77,7 @@ public class PaymentActivityTest {
             e.printStackTrace();
         }
 
+
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.menu_reycler),
                         childAtPosition(
@@ -106,10 +107,11 @@ public class PaymentActivityTest {
         materialButton3.perform(click());
 
         try {
-            Thread.sleep(4000);
+            Thread.sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
 
         ViewInteraction materialButton4 = onView(
                 allOf(withId(R.id.button_add_payment_new), withText("Make payment"),
@@ -286,4 +288,5 @@ public class PaymentActivityTest {
             }
         };
     }
+
 }
