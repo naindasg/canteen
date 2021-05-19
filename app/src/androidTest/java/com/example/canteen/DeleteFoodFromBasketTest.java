@@ -40,7 +40,7 @@ public class DeleteFoodFromBasketTest {
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void deleteFoodFromBasketTest() {
+    public void deleteFoodFromBasketTest2() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.email),
                         childAtPosition(
@@ -77,14 +77,78 @@ public class DeleteFoodFromBasketTest {
             e.printStackTrace();
         }
 
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.viewBasket), withText("View basket"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.clear_basket), withText("Clear basket"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.basket_layout),
+                                        4),
+                                0),
+                        isDisplayed()));
+        materialButton3.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction materialButton4 = onView(
+                allOf(withId(R.id.viewBasket), withText("View basket"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton4.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction materialButton5 = onView(
+                allOf(withId(R.id.BackToMenu), withText("Back to menu"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.basket_layout),
+                                        4),
+                                1),
+                        isDisplayed()));
+        materialButton5.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.menu_reycler),
                         childAtPosition(
                                 withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
                                 0)));
-        recyclerView.perform(actionOnItemAtPosition(0, click()));
+        recyclerView.perform(actionOnItemAtPosition(1, click()));
 
-        ViewInteraction materialButton2 = onView(
+        ViewInteraction materialButton6 = onView(
                 allOf(withId(R.id.addToBasket), withText("Add to basket"),
                         childAtPosition(
                                 allOf(withId(R.id.linearLayout),
@@ -93,9 +157,15 @@ public class DeleteFoodFromBasketTest {
                                                 4)),
                                 1),
                         isDisplayed()));
-        materialButton2.perform(click());
+        materialButton6.perform(click());
 
-        ViewInteraction materialButton3 = onView(
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction materialButton7 = onView(
                 allOf(withId(R.id.viewBasket), withText("View basket"),
                         childAtPosition(
                                 childAtPosition(
@@ -103,7 +173,13 @@ public class DeleteFoodFromBasketTest {
                                         0),
                                 1),
                         isDisplayed()));
-        materialButton3.perform(click());
+        materialButton7.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction recyclerView2 = onView(
                 allOf(withId(R.id.recycler_basket),
@@ -112,7 +188,7 @@ public class DeleteFoodFromBasketTest {
                                 1)));
         recyclerView2.perform(actionOnItemAtPosition(0, click()));
 
-        ViewInteraction materialButton4 = onView(
+        ViewInteraction materialButton8 = onView(
                 allOf(withId(R.id.remove_item_m), withText("Remove item "),
                         childAtPosition(
                                 allOf(withId(R.id.linearLayout4),
@@ -121,7 +197,13 @@ public class DeleteFoodFromBasketTest {
                                                 7)),
                                 1),
                         isDisplayed()));
-        materialButton4.perform(click());
+        materialButton8.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction textView = onView(
                 allOf(withId(R.id.basket_total), withText("The basket is empty"),
