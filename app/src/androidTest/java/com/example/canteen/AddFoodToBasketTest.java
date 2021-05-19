@@ -36,13 +36,11 @@ import static org.hamcrest.Matchers.is;
 @RunWith(AndroidJUnit4.class)
 public class AddFoodToBasketTest {
 
-    //Make sure that the basket doesn't contain any food already, otherwise the test will fail ...
-
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void addFoodToBasketTest() {
+    public void addFoodToBasketTest3() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.email),
                         childAtPosition(
@@ -79,14 +77,27 @@ public class AddFoodToBasketTest {
             e.printStackTrace();
         }
 
-        ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.menu_reycler),
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.viewBasket), withText("View basket"),
                         childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)));
-        recyclerView.perform(actionOnItemAtPosition(0, click()));
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton2.perform(click());
 
 
+
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.clear_basket), withText("Clear basket"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.basket_layout),
+                                        4),
+                                0),
+                        isDisplayed()));
+        materialButton3.perform(click());
 
         try {
             Thread.sleep(4000);
@@ -94,7 +105,46 @@ public class AddFoodToBasketTest {
             e.printStackTrace();
         }
 
-        ViewInteraction materialButton2 = onView(
+        ViewInteraction materialButton4 = onView(
+                allOf(withId(R.id.viewBasket), withText("View basket"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton4.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction materialButton5 = onView(
+                allOf(withId(R.id.BackToMenu), withText("Back to menu"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.basket_layout),
+                                        4),
+                                1),
+                        isDisplayed()));
+        materialButton5.perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction recyclerView = onView(
+                allOf(withId(R.id.menu_reycler),
+                        childAtPosition(
+                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                0)));
+        recyclerView.perform(actionOnItemAtPosition(1, click()));
+
+        ViewInteraction materialButton6 = onView(
                 allOf(withId(R.id.addToBasket), withText("Add to basket"),
                         childAtPosition(
                                 allOf(withId(R.id.linearLayout),
@@ -103,9 +153,15 @@ public class AddFoodToBasketTest {
                                                 4)),
                                 1),
                         isDisplayed()));
-        materialButton2.perform(click());
+        materialButton6.perform(click());
 
-        ViewInteraction materialButton3 = onView(
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction materialButton7 = onView(
                 allOf(withId(R.id.viewBasket), withText("View basket"),
                         childAtPosition(
                                 childAtPosition(
@@ -113,7 +169,7 @@ public class AddFoodToBasketTest {
                                         0),
                                 1),
                         isDisplayed()));
-        materialButton3.perform(click());
+        materialButton7.perform(click());
 
         try {
             Thread.sleep(4000);
@@ -128,16 +184,10 @@ public class AddFoodToBasketTest {
         textView.check(matches(withText("1")));
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.basket_meal_name_r), withText("pizza"),
+                allOf(withId(R.id.basket_meal_name_r), withText("fish and chips"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
-        textView2.check(matches(withText("pizza")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.basket_meal_subtotal_r), withText("12.00"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
-        textView3.check(matches(withText("12.00")));
+        textView2.check(matches(withText("fish and chips")));
     }
 
     private static Matcher<View> childAtPosition(
