@@ -49,7 +49,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /*
-    This class has been taken from:
+    This is an API, and therefore the class has been taken from:
     https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
  */
 public class CheckoutActivityJava extends AppCompatActivity {
@@ -64,7 +64,11 @@ public class CheckoutActivityJava extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
 
-        // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
+        /*
+        declaration taken from:
+        https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+         Configure the SDK with your Stripe publishable key so it can make requests to Stripe
+        */
         stripe = new Stripe(getApplicationContext(),
                 Objects.requireNonNull("pk_test_51IHfbrGfF6sAEAR9wvJrBW61soe8DfrRc5hKyQsl8SkfimyT0rolH6bj2fLDwD3qm202aIh62SKZilBCE99xTYid00pAUA3uRR")
         );
@@ -91,41 +95,11 @@ public class CheckoutActivityJava extends AppCompatActivity {
     /*
         startCheckout() is based on the following link:
         https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
+
      */
     private void startCheckout() {
-        //Get totalPrice
-        Intent intent = getIntent();
-        String price = intent.getStringExtra("mealPrice");
 
-        //Convert price from string to double
-        double amount = Double.parseDouble(price);
-
-        // Create a PaymentIntent by calling the server's endpoint.
-        MediaType mediaType = MediaType.get("application/json; charset=utf-8"); //gets a JSON file
-
-        //Declaring payMap and itemMap
-        Map<String, Object> payMap = new HashMap<>();
-        Map<String, Object> itemMap = new HashMap<>();
-
-        List<Map<String, Object>> itemList = new ArrayList<>();
-        payMap.put("currency", "gbp"); //place currency and gbp
-        itemMap.put("id", "photo_subscription"); //put id and photo subscription
-        itemMap.put("amount", amount * 100); // put amount and convert it into pounds
-
-        //itemList will have ("id", "photo_subscription") and ("amount", amount * 100)
-        itemList.add(itemMap);
-
-        //items =  ("id", "photo_subscription") and ("amount", amount * 100)
-        payMap.put("items", itemList);
-
-        //Convert payMap object into Json String
-        String json = new Gson().toJson(payMap);
-
-        //RequestBody.create(content, contentType);
-        RequestBody body = RequestBody.create(json, mediaType);
-        Request request = new Request.Builder().url(BACKEND_URL + "create-payment-intent").post(body).build();
-
-        httpClient.newCall(request).enqueue(new PayCallback(this));
+        modifyAmount();
 
         // Hook up the pay button to the card widget and stripe instance
         Button payButton = findViewById(R.id.payButton);
@@ -379,5 +353,45 @@ public class CheckoutActivityJava extends AppCompatActivity {
             }
         });
 
+    }
+
+    /*
+        This sample of code has been taken from the following youtube tutorial:
+        https://www.youtube.com/watch?v=EqzG6E2n7qo&t=36s&ab_channel=CodingWithTashiCodingWithTashi
+     */
+    public void modifyAmount() {
+        //Get totalPrice
+        Intent intent = getIntent();
+        String price = intent.getStringExtra("mealPrice");
+
+        //Convert price from string to double
+        double amount = Double.parseDouble(price);
+
+        // Create a PaymentIntent by calling the server's endpoint.
+        MediaType mediaType = MediaType.get("application/json; charset=utf-8"); //gets a JSON file
+
+        //Declaring payMap and itemMap
+        Map<String, Object> order = new HashMap<>();
+        Map<String, Object> foodItems = new HashMap<>();
+        List<Map<String, Object>> foodItemsList = new ArrayList<>();
+        order.put("currency", "gbp"); //place currency and gbp
+
+        foodItems.put("id", "photo_subscription"); //put id and photo subscription
+        foodItems.put("amount", amount * 100); // put amount and convert it into pounds
+
+        //foodItemsList will have ("id", "photo_subscription") and ("amount", amount * 100)
+        foodItemsList.add(foodItems);
+
+        //items =  ("id", "photo_subscription") and ("amount", amount * 100)
+        order.put("items", foodItemsList);
+
+        //Convert payMap object into Json String
+        String json = new Gson().toJson(order);
+
+        //RequestBody.create(content, contentType);
+        RequestBody body = RequestBody.create(json, mediaType);
+        Request request = new Request.Builder().url(BACKEND_URL + "create-payment-intent").post(body).build();
+
+        httpClient.newCall(request).enqueue(new PayCallback(this));
     }
 }
