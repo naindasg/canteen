@@ -1,9 +1,11 @@
-# Your project name here
+How to run the Stripe API:
 
-## Information about this repository
+This is the customer side of the canteen app. 
 
-This is the repository that you are going to use **individually** for developing your project. Please use the resources provided in the module to learn about **plagiarism** and how plagiarism awareness can foster your learning.
+In order to run the app, you must do the following: 
 
-Regarding the use of this repository, once a feature (or part of it) is developed and **working** or parts of your system are integrated and **working**, define a commit and push it to the remote repository. You may find yourself making a commit after a productive hour of work (or even after 20 minutes!), for example. Choose commit message wisely and be concise.
-
-Please choose the structure of the contents of this repository that suits the needs of your project but do indicate in this file where the main software artefacts are located.
+1) Download the files in the Stripe API repository and store it in a folder of your choice. 
+2) Open up the command prompt and use the "cd" command to change to the folder that contains all of the files of the Stripe API repository. 
+3) Enter "node server.js" to run the server.js file 
+4) After seeing "Node server listening on port 4242", you can now run the android application, and the Stripe (payment) system should now be working effectively. 
+5) When using the app, use the card number "4242 4242 4242 4242", but the rest of the details (e.g. postcode, CVC etc) can be anything. 
