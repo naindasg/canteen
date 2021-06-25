@@ -1,4 +1,3 @@
-How to run the Stripe API:
 
 This is the customer side of the canteen app. 
 
