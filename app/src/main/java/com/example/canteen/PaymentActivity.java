@@ -18,9 +18,11 @@ public class PaymentActivity extends Application {
     public void onCreate() {
         super.onCreate();
 
+        String publishable_key = getString(R.string.PUBLISHABLE_KEY);
+
         PaymentConfiguration.init(
                 getApplicationContext(),
-                BuildConfig.PUBLISHABLE_KEY
+                publishable_key
         );
 
     }

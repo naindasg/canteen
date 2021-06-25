@@ -3,9 +3,6 @@ plugins {
     id 'com.google.gms.google-services'
 }
 
-def publishableKey = rootProject.file("publishablekey.properties");
-def apikeyproperties = new Properties();
-apikeyproperties.load(new FileInputStream(publishableKey));
 
 android {
     compileSdkVersion 30
@@ -20,7 +17,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "PUBLISHABLE_KEY", apikeyproperties['PUBLISHABLE_KEY'])
     }
 
     buildTypes {

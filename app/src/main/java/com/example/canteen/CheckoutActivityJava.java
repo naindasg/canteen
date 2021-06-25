@@ -70,8 +70,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
          Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         */
 
+        String publishable_key = getString(R.string.PUBLISHABLE_KEY);
+
         stripe = new Stripe(getApplicationContext(),
-                Objects.requireNonNull(BuildConfig.PUBLISHABLE_KEY)
+                Objects.requireNonNull(publishable_key)
         );
 
         startCheckout();
