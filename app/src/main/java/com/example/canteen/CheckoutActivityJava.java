@@ -69,8 +69,9 @@ public class CheckoutActivityJava extends AppCompatActivity {
         https://stripe.com/docs/payments/accept-a-payment?platform=android&lang=java&ui=custom
          Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         */
+
         stripe = new Stripe(getApplicationContext(),
-                Objects.requireNonNull("pk_test_51IHfbrGfF6sAEAR9wvJrBW61soe8DfrRc5hKyQsl8SkfimyT0rolH6bj2fLDwD3qm202aIh62SKZilBCE99xTYid00pAUA3uRR")
+                Objects.requireNonNull(BuildConfig.PUBLISHABLE_KEY)
         );
 
         startCheckout();
